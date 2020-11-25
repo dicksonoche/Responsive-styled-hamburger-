@@ -1,0 +1,476 @@
+* { 
+    padding: 0; margin: 0; box-sizing: border-box;
+} 
+body, button { 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+} 
+.container { 
+    min-height: 100vh; 
+    width: 100%; 
+    background: linear-gradient(185deg, #ff0000 10%, #0050ac 80%); 
+    overflow-x: hidden; 
+    transform-style: preserve-3d;
+} 
+.navbar { 
+    background-color: rgba(0, 0, 0, 0.623);
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 10; 
+    height: 8vh;
+} 
+.menu { 
+    max-width: 72rem; 
+    width: 100%; 
+    margin: 0 auto; 
+    padding: 0 2rem; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    color: #fff;
+} 
+.logo { 
+    font-size: 1.1rem; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    line-height: 4rem;
+} 
+.logo span { 
+    font-weight: 300;
+} 
+.main-Menu { 
+    height: 4rem; 
+    width: 3rem; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-end;
+} 
+.bar { 
+    width: 1.9rem; 
+    height: 1.5px; 
+    border-radius: 2px; 
+    background-color: snow; 
+    transition: 0.5s; 
+    position: relative;
+} 
+.bar:before, .bar:after { 
+    content: ""; 
+    position: absolute; 
+    width: inherit; 
+    height: inherit; 
+    background-color: snow; 
+    transition: 0.5s;
+} 
+.bar:before { 
+    transform: translateY(-9px);
+} 
+.bar:after { 
+    transform: translateY(9px);
+} 
+.main { 
+    position: relative; 
+    width: 100%; 
+    left: 0; 
+    z-index: 5; 
+    overflow: hidden; 
+    transform-origin: left; 
+    transform-style: preserve-3d; 
+    transition: 0.5s;
+} 
+header { 
+    min-height: 100vh; 
+    width: 100%; 
+    background: url("anomaly1.png") no-repeat top center / cover; 
+    position: relative;
+} 
+
+.overLap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(rgba(238, 38, 121, 0.623), green, blue, alpha);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.within{
+    max-width: 35rem;
+    text-align: center;
+    color: rgba(255, 242, 242, 0.884);
+    padding: 0 2rem;
+}
+
+.title{
+    font-size: 2.7rem;
+    background-color: rgba(0, 0, 0, 0.623);
+}
+.class-p{
+    font-size: 0.9rem;
+    background-color: rgba(0, 0, 0, 0.623);
+}
+
+.btn{
+    margin-top: 1rem;
+    padding: 0.6rem 1.8rem;
+    background-color: rgb(0, 58, 167);
+    border: none;
+    border-radius: 25px;
+    color: seashell;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.container.active .bar{
+    transform: rotate(360deg);
+    background-color: transparent;
+}
+
+.container.active .bar:before{
+    transform: translateY(0) rotate(45deg);
+}
+
+.container.active .bar:after{
+    transform: translateY(0) rotate(135deg);
+}
+
+.container.active .main {
+    animation: main-animation 0.5s ease;
+    cursor: pointer;
+    transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+}
+
+/*@keyframes main-animation{
+    from{
+        transform: translate(0);
+    }
+
+    to {
+        transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+    }
+}*/
+
+.links{
+    position: absolute;
+    width: 30%;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+}
+
+.links a{
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 0.7rem 0;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: hide 0.5s forwards ease;
+
+}
+
+.links a:hover{
+    color: rgb(13, 95, 75)
+}
+
+.container.active .links a{
+    animation: appear 0.5s forwards ease var(--i);
+}
+
+@keyframes appear{
+    from{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes hide{
+    from {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    to{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+.shadow{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: 0.5s;
+    background-color: black;
+}
+
+.first.shadow{
+    z-index: -1;
+    opacity: 0.45;
+}
+
+.second.shadow{
+    z-index: -2;
+    opacity: 0.302;
+}
+
+.container.active .first.shadow {
+    animation: firstshadow 0.6 ease-out;
+    transform: perspective(1300px) rotateY(20deg) translateZ(215px) scale(0.5);
+}
+
+@keyframes firstshadow{
+    0%{
+        transform: translate(0);
+    }
+
+    5%{
+        transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+    }
+
+    100%{
+        transform: perspective(1300px) rotateY(20deg) translateZ(215px) scale(0.5);
+    }
+}
+
+.container.active .second.shadow {
+    animation: secondshadow 0.6 ease-out;
+    transform: perspective(1300px) rotateY(20deg) translateZ(120px) scale(0.5);
+}
+
+@keyframes secondshadow{
+    0%{
+        transform: translate(0);
+    }
+
+    20%{
+        transform: perspective(1300px) rotateY(20deg) translateZ(310px) scale(0.5);
+    }
+
+    100%{
+        transform: perspective(1300px) rotateY(20deg) translateZ(115px) scale(0.5);
+    }
+}
+
+.container.active .main:hover + .first.shadow{
+    transform: perspective(1300px) rotateY(20deg) translateZ(230px) scale(0.5);
+}
+
+.container.active .main:hover {
+    transform: perspective(1300px) rotateY(20deg) translateZ(340px) scale(0.5);
+}
+@media (max-width: 570px) {
+    .main-container {
+        width: 100%;
+    }
+    header{
+        width: 100%;
+    }
+    .title {
+        height: 5vh;
+        width: 100%;
+        font-size: 20px;
+        text-align: center;
+        padding: 0 0 0 3rem;
+    }
+    .btn {
+        height: 1vh;
+        width: 20%;
+        font-size: 10.5px;
+        text-align: center;
+        padding: 1rem 1rem 2rem 1rem;
+    }
+    .class-p {
+        width: 95%;
+        height: 10vh;
+    }
+    .shadow{
+        position: absolute;
+        width: 50%;
+        height: 100vh;
+    }
+    .links a{
+        padding: 0.5rem 0 0 0;
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+    }
+}
+@media (max-width: 530px) {
+    .main-container {
+        width: 80%;
+    }
+    header{
+        width: 100%;
+    }
+    .title {
+        height: 5vh;
+        width: 100%;
+        font-size: 20px;
+        text-align: center;
+        padding: 0 0 0 3rem;
+    }
+    .class-p {
+        width: 95%;
+        height: 10vh;
+    }
+    .btn {
+        height: 0.8vh;
+        width: 25%;
+        font-size: 11px;
+        text-align: center;
+        padding: 0.7rem 0.7rem 2rem 1rem;
+        letter-spacing: 1px;
+    }
+    .shadow{
+        position: absolute;
+        width: 50%;
+        height: 100vh;
+    }
+    .links a{
+        padding: 0.5rem 0 0 0;
+        display: inline-block;
+        font-size: 0.5rem;
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 0.25px;
+    }
+}
+@media (max-width: 450px) {
+    .main-container {
+        width: 115%;
+    }
+    header{
+        width: 55%;
+    }
+    .title {
+        height: 8vh;
+        width: 100%;
+        font-size: 20px;
+        text-align: center;
+        padding: 0 0 0 3rem;
+    }
+    .class-p {
+        width: 95%;
+        height: 10vh;
+    }
+    .btn {
+        height: 0.8vh;
+        width: 30%;
+        font-size: 10px;
+        text-align: center;
+        padding: 0.5rem 0.5rem 2rem 1rem;
+    }
+    .shadow{
+        position: absolute;
+        width: 50%;
+        height: 100vh;
+    }
+    .links a{
+        padding: 0.3rem 0 0 0;
+        display: inline-block;
+        font-size: 0.6rem;
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+    }
+}
+@media (max-width: 360px) {
+    .main-container {
+        width: 65%;
+    }
+    header{
+        width: 90%;
+    }
+    .title {
+        height: 5.8vh;
+        width: 100%;
+        font-size: 15.2px;
+        text-align: center;
+        padding: 0 0 0 0.2rem;
+    }
+    .class-p {
+        width: 95%;
+        height: 10vh;
+        font-size: 11px;
+    }
+    .btn {
+        height: 0.8vh;
+        width: 30%;
+        font-size: 10px;
+        text-align: center;
+        padding: 0.25rem 0.25rem 1rem 1rem;
+    }
+    .shadow{
+        position: absolute;
+        width: 35%;
+        height: 100vh;
+    }
+    .links a{
+        padding: 0.18rem 0 0 0;
+        display: inline-block;
+        font-size: 0.56rem;
+        font-weight: 160;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+    }
+}
+@media (max-width: 280px) {
+    .main-container {
+        width: 50%;
+    }
+    header{
+        width: 90%;
+    }
+    .title {
+        height: 5vh;
+        width: 100%;
+        font-size: 12px;
+        text-align: center;
+        padding: 0 0 0 0;
+    }
+    .class-p {
+        width: 95%;
+        height: 10vh;
+        font-size: 10px;
+    }
+    .shadow{
+        position: absolute;
+        width: 35%;
+        height: 100vh;
+    }
+    .links a{
+        padding: 0.15rem 0 0 0;
+        display: inline-block;
+        font-size: 0.48rem;
+        font-weight: 160;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+    }
